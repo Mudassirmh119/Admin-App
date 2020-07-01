@@ -1,0 +1,25 @@
+.main {
+  margin: 56px 10px 0 10px;
+  /* margin-left: 10px; */
+  transition: margin-left 0.5s ease-in-out;
+}
+
+.main.open {
+  /* margin-top: 56px; */
+  margin: 56px 10px 0 390px;
+  transition: margin-left 0.5s ease-in-out;
+}
+
+@media (max-width: 1040px) {
+  .main.open {
+    margin-top: 56px;
+    margin: 56px 10px 0 10px;
+    transition: margin-left 0.5s ease;
+  }
+}
+
+.container {
+  margin-top: 80px;
+  text-align: center;
+  border: 3px solid rgb(204, 194, 194);
+}
