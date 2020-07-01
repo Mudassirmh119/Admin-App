@@ -23,3 +23,11 @@
   text-align: center;
   border: 3px solid rgb(204, 194, 194);
 }
+
+.clickable {
+  cursor: pointer;
+}
+
+tbody tr td {
+  width: 5px;
+}
