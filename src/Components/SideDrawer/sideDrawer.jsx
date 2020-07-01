@@ -1,5 +1,6 @@
 import React from "react";
 import "./sideDrawer.css";
+import { Link } from "react-router-dom";
 
 const SideDrawer = (props) => {
   const drawerClasses = props.show ? "side-drawer open" : "side-drawer";
@@ -7,16 +8,16 @@ const SideDrawer = (props) => {
     <nav className={drawerClasses}>
       <ul>
         <li>
-          <a href="/">
+          <Link to="/users">
             <span className="fa fa-list-ul " />
             Users
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/">
+          <Link to="/posts">
             <span className="fa fa-list-ul " />
             Posts
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>

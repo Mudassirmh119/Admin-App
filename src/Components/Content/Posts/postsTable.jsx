@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import _ from "lodash";
 import Table from "../../Common/table";
 
 class PostsTable extends Component {

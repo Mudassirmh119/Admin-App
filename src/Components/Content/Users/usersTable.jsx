@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import _ from "lodash";
-import Table from "../Common/table";
+import Table from "../../Common/table";
+
 class UsersTable extends Component {
   columns = [
     {

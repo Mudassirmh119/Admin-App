@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { getUsers, deleteUser } from "../../Services/userService";
+import { getUsers, deleteUser } from "../../../Services/userService";
 import _ from "lodash";
-import Pagination from "./../Common/pagination";
+import Pagination from "../../Common/pagination";
 import UsersTable from "./usersTable";
-import { paginate } from "./../../utils/paginate";
-import SearchBox from "./searchBox";
+import { paginate } from "../../../utils/paginate";
+import SearchBox from "../searchBox";
 
 class Users extends Component {
   constructor(props) {
