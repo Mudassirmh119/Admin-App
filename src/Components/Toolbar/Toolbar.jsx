@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./Toolbar.css";
 
 class Toolbar extends Component {
@@ -63,9 +64,9 @@ class Toolbar extends Component {
             <ul>
               {rotateIcon}
               <li>
-                <a href="/">
+                <Link to="/login">
                   <span className="fa fa-user-circle" />
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

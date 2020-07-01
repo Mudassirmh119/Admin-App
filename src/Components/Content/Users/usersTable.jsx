@@ -3,24 +3,12 @@ import Table from "../../Common/table";
 
 class UsersTable extends Component {
   columns = [
-    {
-      path: "name",
-      label: "Name",
-      // content: (movie) => (
-      //   <Link to={`/movies/${movie._id}`}>{movie.title}</Link>
-      // ),
-    },
+    { path: "name", label: "Name" },
     { path: "username", label: "Username" },
     { path: "email", label: "Email" },
     { path: "address.city", label: "City" },
     { path: "phone", label: "Phone" },
     { path: "website", label: "Website" },
-    //   {
-    //     key: "like",
-    //     content: (movie) => (
-    //       <Like liked={movie.liked} onClick={() => this.props.onLike(movie)} />
-    //     ),
-    //   },
     {
       key: "delete",
       content: (user) => (

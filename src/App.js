@@ -2,11 +2,10 @@ import React, { Component } from "react";
 import Toolbar from "./Components/Toolbar/Toolbar";
 import SideDrawer from "./Components/SideDrawer/sideDrawer";
 import "./App.css";
-// import BackDrop from "./Components/BackDrop/backDrop";
 import Content from "./Components/Content/content";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import Posts from "./Components/Content/Posts/posts";
-// import Users from "./Components/Content/Users/users";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import LoginForm from "./Components/loginForm";
+import RegisterForm from "./Components/registerForm";
 
 class App extends Component {
   state = {
@@ -24,26 +23,26 @@ class App extends Component {
   };
 
   render() {
-    // const backDrop = this.state.sideDrawerOpen ? (
-    //   <BackDrop click={this.handleBackDropClick} />
-    // ) : null;
-
     return (
-      <Router>
-        <div className="App">
-          <Toolbar drawerClickHandler={this.drawerTogglerClickHandler} />
-          <SideDrawer show={this.state.sideDrawerOpen} />
-          {/* {backDrop} */}
-          {/* <Content show={this.state.sideDrawerOpen} /> */}
-        </div>
-        <Switch>
-          <Route
-            path="/:content"
-            component={() => <Content show={this.state.sideDrawerOpen} />}
-          />
-          <Route exact path="/" />
-        </Switch>
-      </Router>
+      <div className="App">
+        <Router>
+          <Switch>
+            <Route path="/register" component={RegisterForm} />
+            <Route path="/login" component={LoginForm} />
+            <Route path="/:content">
+              <Toolbar drawerClickHandler={this.drawerTogglerClickHandler} />
+              <SideDrawer show={this.state.sideDrawerOpen} />
+              <Content show={this.state.sideDrawerOpen} />
+            </Route>
+            <Route path="/login" />
+            <Route exact path="/">
+              <Link to="/users">
+                <button className="btn btn-info btn-lg">Go To Dashboard</button>
+              </Link>
+            </Route>
+          </Switch>
+        </Router>
+      </div>
     );
   }
 }

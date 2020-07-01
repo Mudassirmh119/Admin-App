@@ -6,7 +6,7 @@ import Select from "./select";
 class Form extends Component {
   state = {
     data: {},
-    errors: {}
+    errors: {},
   };
 
   validate = () => {
@@ -15,30 +15,50 @@ class Form extends Component {
     if (!error) return null;
 
     const errors = {};
-    for (let item of error.details) errors[item.path[0]] = item.message;
+    // error.details.map((item) => (errors[item.path[0]] = item.message));    // by map method
+    for (let item of error.details) errors[item.path[0]] = item.message; // By using for loop
     return errors;
+
+    // const errors = {};
+
+    // const { data } = this.state;
+    // if (data.username.trim() === "")
+    //   errors.username = "Username is required.";
+    // if (data.password.trim() === "")
+    //   errors.password = "Password is required.";
+
+    // return Object.keys(errors).length === 0 ? null : errors;
   };
 
-  validateProperty = ({ name, value }) => {
-    const obj = { [name]: value };
+  validatePropert = ({ name, value }) => {
+    const obj = { [name]: value }; // Computed Properites in ES6 like '[name]' , we can set the key of an object dynamically.
     const schema = { [name]: this.schema[name] };
+
     const { error } = Joi.validate(obj, schema);
     return error ? error.details[0].message : null;
+    // if (name === "username") {
+    //   if (value.trim() === "") return "Username is required";
+    //   // ...
+    // }
+    // if (name === "password") {
+    //   if (value.trim() === "") return "Password is required";
+    //   // ...
+    // }
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
 
     const errors = this.validate();
     this.setState({ errors: errors || {} });
     if (errors) return;
-
+    // const username = this.username.current.value;
     this.doSubmit();
   };
 
   handleChange = ({ currentTarget: input }) => {
     const errors = { ...this.state.errors };
-    const errorMessage = this.validateProperty(input);
+    const errorMessage = this.validatePropert(input);
     if (errorMessage) errors[input.name] = errorMessage;
     else delete errors[input.name];
 
@@ -50,9 +70,23 @@ class Form extends Component {
 
   renderButton(label) {
     return (
-      <button disabled={this.validate()} className="btn btn-primary">
+      <button className="btn btn-primary" disabled={this.validate()}>
         {label}
       </button>
+    );
+  }
+
+  renderInput(name, label, type = "text") {
+    const { data, errors } = this.state;
+    return (
+      <Input
+        name={name}
+        value={data[name]}
+        label={label}
+        type={type}
+        onChange={this.handleChange}
+        error={errors[name]}
+      />
     );
   }
 
@@ -66,22 +100,7 @@ class Form extends Component {
         label={label}
         options={options}
         onChange={this.handleChange}
-        error={errors[name]}
-      />
-    );
-  }
-
-  renderInput(name, label, type = "text") {
-    const { data, errors } = this.state;
-
-    return (
-      <Input
-        type={type}
-        name={name}
-        value={data[name]}
-        label={label}
-        onChange={this.handleChange}
-        error={errors[name]}
+        errors={errors[name]}
       />
     );
   }
