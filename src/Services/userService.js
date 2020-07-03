@@ -139,14 +139,19 @@ export function getUser(id) {
   return users.find((u) => u.id === id);
 }
 
-export function saveMovie(user) {
+export function saveUser(user) {
   let userInDB = users.find((u) => u.id === user.id) || {};
+
   userInDB.name = user.name;
   userInDB.username = user.username;
   userInDB.email = user.email;
-  userInDB.address.street = user.address.street;
-  userInDB.address.suite = user.address.suite;
-  userInDB.address.city = user.address.city;
+
+  const address = {};
+  address.street = user.street;
+  address.suite = user.suite;
+  address.city = user.city;
+
+  userInDB.address = { ...address };
   userInDB.phone = user.phone;
   userInDB.website = user.website;
 
@@ -154,6 +159,7 @@ export function saveMovie(user) {
     userInDB.id = Date.now().toString();
     users.push(userInDB);
   }
+  console.log(users);
 
   return userInDB;
 }

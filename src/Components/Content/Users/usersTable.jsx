@@ -10,6 +10,17 @@ class UsersTable extends Component {
     { path: "phone", label: "Phone" },
     { path: "website", label: "Website" },
     {
+      key: "edit",
+      content: (user) => (
+        <button
+          // onClick={() => this.props.onEdit(user)}
+          className="btn btn-info btn-sm"
+        >
+          Edit
+        </button>
+      ),
+    },
+    {
       key: "delete",
       content: (user) => (
         <button

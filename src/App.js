@@ -36,6 +36,7 @@ class App extends Component {
             </Route>
             <Route path="/login" />
             <Route exact path="/">
+              {/* <Redirect to="/dashboard" /> */}
               <Link to="/users">
                 <button className="btn btn-info btn-lg">Go To Dashboard</button>
               </Link>
