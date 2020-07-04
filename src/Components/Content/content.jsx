@@ -1,12 +1,13 @@
 import React from "react";
 import "./content.css";
 import Users from "./Users/users";
-import { useParams } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 import Posts from "./Posts/posts";
 
 const getContent = (content) => {
   if (content === "posts") return <Posts />;
   else if (content === "users") return <Users />;
+  else return <Redirect to="/not-found" />;
 };
 
 const Content = (props) => {

@@ -1,6 +1,6 @@
 const users = [
   {
-    id: 1,
+    id: "1",
     name: "Leanne Graham",
     username: "Bret",
     email: "Sincere@april.biz",
@@ -9,11 +9,11 @@ const users = [
       suite: "Apt. 556",
       city: "Gwenborough",
     },
-    phone: "1-770-736-8031 x56442",
+    phone: "111111111131",
     website: "hildegard.org",
   },
   {
-    id: 2,
+    id: "2",
     name: "Ervin Howell",
     username: "Antonette",
     email: "Shanna@melissa.tv",
@@ -22,11 +22,11 @@ const users = [
       suite: "Suite 879",
       city: "Wisokyburgh",
     },
-    phone: "010-692-6593 x09125",
+    phone: "1111111111",
     website: "anastasia.net",
   },
   {
-    id: 3,
+    id: "3",
     name: "Clementine Bauch",
     username: "Samantha",
     email: "Nathan@yesenia.net",
@@ -35,11 +35,11 @@ const users = [
       suite: "Suite 847",
       city: "McKenziehaven",
     },
-    phone: "1-463-123-4447",
+    phone: "111111111147",
     website: "ramiro.info",
   },
   {
-    id: 4,
+    id: "4",
     name: "Patricia Lebsack",
     username: "Karianne",
     email: "Julianne.OConner@kory.org",
@@ -48,11 +48,11 @@ const users = [
       suite: "Apt. 692",
       city: "South Elvis",
     },
-    phone: "493-170-9623 x156",
+    phone: "1111111111",
     website: "kale.biz",
   },
   {
-    id: 5,
+    id: "5",
     name: "Chelsey Dietrich",
     username: "Kamren",
     email: "Lucio_Hettinger@annie.ca",
@@ -61,11 +61,11 @@ const users = [
       suite: "Suite 351",
       city: "Roscoeview",
     },
-    phone: "(254)954-1289",
+    phone: "11111111119",
     website: "demarco.info",
   },
   {
-    id: 6,
+    id: "6",
     name: "Mrs. Dennis Schulist",
     username: "Leopoldo_Corkery",
     email: "Karley_Dach@jasper.info",
@@ -74,11 +74,11 @@ const users = [
       suite: "Apt. 950",
       city: "South Christy",
     },
-    phone: "1-477-935-8478 x6430",
+    phone: "1111111111780",
     website: "ola.org",
   },
   {
-    id: 7,
+    id: "7",
     name: "Kurtis Weissnat",
     username: "Elwyn.Skiles",
     email: "Telly.Hoeger@billy.biz",
@@ -87,11 +87,11 @@ const users = [
       suite: "Suite 280",
       city: "Howemouth",
     },
-    phone: "210.067.6132",
+    phone: "1111111111",
     website: "elvis.io",
   },
   {
-    id: 8,
+    id: "8",
     name: "Nicholas Runolfsdottir V",
     username: "Maxime_Nienow",
     email: "Sherwood@rosamond.me",
@@ -100,11 +100,11 @@ const users = [
       suite: "Suite 729",
       city: "Aliyaview",
     },
-    phone: "586.493.6943 x140",
+    phone: "1111111111",
     website: "jacynthe.com",
   },
   {
-    id: 9,
+    id: "9",
     name: "Glenna Reichert",
     username: "Delphine",
     email: "Chaim_McDermott@dana.io",
@@ -113,11 +113,11 @@ const users = [
       suite: "Suite 449",
       city: "Bartholomebury",
     },
-    phone: "(775)976-6794 x41206",
+    phone: "11111111114 ",
     website: "conrad.com",
   },
   {
-    id: 10,
+    id: "10",
     name: "Clementina DuBuque",
     username: "Moriah.Stanton",
     email: "Rey.Padberg@karina.biz",
@@ -126,7 +126,7 @@ const users = [
       suite: "Suite 198",
       city: "Lebsackbury",
     },
-    phone: "024-648-3804",
+    phone: "1111111111",
     website: "ambrose.net",
   },
 ];
@@ -136,7 +136,8 @@ export function getUsers() {
 }
 
 export function getUser(id) {
-  return users.find((u) => u.id === id);
+  const user = users.find((u) => u.id === id);
+  return user;
 }
 
 export function saveUser(user) {
@@ -159,7 +160,6 @@ export function saveUser(user) {
     userInDB.id = Date.now().toString();
     users.push(userInDB);
   }
-  console.log(users);
 
   return userInDB;
 }

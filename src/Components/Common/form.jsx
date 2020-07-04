@@ -15,44 +15,25 @@ class Form extends Component {
     if (!error) return null;
 
     const errors = {};
-    // error.details.map((item) => (errors[item.path[0]] = item.message));    // by map method
-    for (let item of error.details) errors[item.path[0]] = item.message; // By using for loop
+    for (let item of error.details) errors[item.path[0]] = item.message;
     return errors;
-
-    // const errors = {};
-
-    // const { data } = this.state;
-    // if (data.username.trim() === "")
-    //   errors.username = "Username is required.";
-    // if (data.password.trim() === "")
-    //   errors.password = "Password is required.";
-
-    // return Object.keys(errors).length === 0 ? null : errors;
   };
 
   validatePropert = ({ name, value }) => {
-    const obj = { [name]: value }; // Computed Properites in ES6 like '[name]' , we can set the key of an object dynamically.
+    const obj = { [name]: value };
     const schema = { [name]: this.schema[name] };
 
     const { error } = Joi.validate(obj, schema);
     return error ? error.details[0].message : null;
-    // if (name === "username") {
-    //   if (value.trim() === "") return "Username is required";
-    //   // ...
-    // }
-    // if (name === "password") {
-    //   if (value.trim() === "") return "Password is required";
-    //   // ...
-    // }
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
 
     const errors = this.validate();
+    console.log(errors);
     this.setState({ errors: errors || {} });
     if (errors) return;
-    // const username = this.username.current.value;
     this.doSubmit();
   };
 
@@ -64,20 +45,8 @@ class Form extends Component {
 
     const data = { ...this.state.data };
     data[input.name] = input.value;
-    // console.log(input.name + " " + input.value);
-
-    // eval("data" + this.changePropertyValue(input.name) + " = input.value"); // use to execute javascript code as a string
 
     this.setState({ data, errors });
-  };
-
-  changePropertyValue = (inputName) => {
-    // inputName = address.city
-    const key = inputName
-      .split(".")
-      .map((item) => "['" + item + "']")
-      .reduce((total, str) => total + str);
-    return key;
   };
 
   renderButton(label) {

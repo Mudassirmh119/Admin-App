@@ -33,10 +33,12 @@ class LoginForm extends Form {
           {this.renderInput("password", "Password", "password")}
           {this.renderButton("Login")}
         </form>
-        <Link to="/register">
-          <button className="btn btn-primary" style={{ marginTop: "10px" }}>
-            Register
-          </button>
+        <Link
+          to="/register/new"
+          className="btn btn-primary"
+          style={{ marginTop: "10px" }}
+        >
+          Register
         </Link>
       </div>
     );

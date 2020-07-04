@@ -3,13 +3,21 @@ import Toolbar from "./Components/Toolbar/Toolbar";
 import SideDrawer from "./Components/SideDrawer/sideDrawer";
 import "./App.css";
 import Content from "./Components/Content/content";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import LoginForm from "./Components/loginForm";
 import RegisterForm from "./Components/registerForm";
+import Users from "./Components/Content/Users/users";
+import Posts from "./Components/Content/Posts/posts";
+import NotFound from "./Components/notFound";
 
 class App extends Component {
   state = {
-    sideDrawerOpen: true,
+    sideDrawerOpen: false,
   };
 
   drawerTogglerClickHandler = () => {
@@ -27,20 +35,18 @@ class App extends Component {
       <div className="App">
         <Router>
           <Switch>
-            <Route path="/register" component={RegisterForm} />
+            <Route path="/register/:id" component={RegisterForm} />
             <Route path="/login" component={LoginForm} />
-            <Route path="/:content">
+            <Route path="/not-found" component={NotFound} />
+            <Route exact path="/:content">
               <Toolbar drawerClickHandler={this.drawerTogglerClickHandler} />
               <SideDrawer show={this.state.sideDrawerOpen} />
               <Content show={this.state.sideDrawerOpen} />
             </Route>
-            <Route path="/login" />
-            <Route exact path="/">
-              {/* <Redirect to="/dashboard" /> */}
-              <Link to="/users">
-                <button className="btn btn-info btn-lg">Go To Dashboard</button>
-              </Link>
-            </Route>
+            <Route path="/users" component={Users} />
+            <Route path="/posts" component={Posts} />
+            <Redirect from="/" exact to="/users" />
+            <Redirect to="/not-found" />
           </Switch>
         </Router>
       </div>
